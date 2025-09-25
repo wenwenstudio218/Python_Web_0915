@@ -1,41 +1,26 @@
-import requests
+import tools
 
-def download_youbike_data(): #建立程式架構
-    url = 'https://data.ntpc.gov.tw/api/datasets/010e5b15-3823-4b20-b401-b1cf000550c5/json?page=0&size=1000'
-
-    '''
-    response = requests.get(url)
-    # print(type(response))
-
-    if response.status_code == 200:
-        print("下載成功")
-        # print(response.text)
-        # print(response.json())
-        for item in response.json():
-            print(item)
-    else:
-        print("下載失敗")
-    '''
-
+def main():
     try:
-        response = requests.get(url)
-        response.raise_for_status() #為一個實體方法
-        try:
-            data = response.json()
-        except requests.exceptions.JSONDecodeError as jsonError:
-            print(f"發生轉換格是錯誤：{jsonError}")
+        data = tools.download_youbike_data()
+        areas = tools.get_area(data)
+        # print(areas)
+        print("目前可以查詢的區域：\n")
+        for area in areas:
+            print(area,end=" ")
+        print("\n")
+        selected = input("請選擇一個區域：")
+        if selected not in areas:
+            print("查無此區域，請重新執行程式")
+            return
+        sites_of_area = tools.get_sites_of_area(data, selected)
+        print(f"\n{selected} 區的站點資訊：")
+        for site in sites_of_area:
+            # 只顯示站點名稱與可借車輛數
+            print(f"站點：{site['sna']}，可借車輛：{site['sbi']}")
 
-    except requests.exceptions.HTTPError as err_http:
-        print(f"發生 HTTP 錯誤：{err_http}")
-    except requests.exceptions.ConnectionError as err_conn:
-        print(f"發生連線錯誤(例如DNS查詢失敗、連線被拒)：{err_conn}")
-    except requests.exceptions.Timeout as err_timeout:
-        print(f"請求超時：{err_timeout}")
-    except requests.exceptions.RequestException as err:
-        # 這是所有requests例外的父類別，可以用來捕捉其他未預期的錯誤
-        print(f"發生未預期的請求錯誤：{err}")
-    else:
-        print(f"沒有出錯:\n{data}")
+    except Exception as e:
+        print(f"發生錯誤\n{e}")
 
 if __name__ == "__main__":
-    download_youbike_data()
+    main()
