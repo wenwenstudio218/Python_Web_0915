@@ -1,1 +1,1 @@
-console.log("嗨，我的 JavaScript 檔案被成功載入了！","我的名字叫Robert!")
+console.log("This is lesson6_1.js,我的名字是Wenwen");

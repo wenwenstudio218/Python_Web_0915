@@ -1,25 +1,27 @@
-console.log("Hello! index.js")
-
 document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.querySelector('.nav-toggle');
-    const navList = document.querySelector('.nav-list');
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-    if (!toggle || !navList) return;
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function () {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
 
-    toggle.addEventListener('click', function () {
-        navList.classList.toggle('open');
-    });
+        // 點擊選單項目時關閉選單
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function () {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
 
-	// 在視窗尺寸改變到桌機時，自動關閉手機選單以避免遺留狀態
-	window.addEventListener('resize', function () {
-		if (window.innerWidth > 800) {
-			if (navList.classList.contains('open')) {
-				navList.classList.remove('open');
-			}
-			if (toggle.classList.contains('open')) {
-				toggle.classList.remove('open');
-				toggle.setAttribute('aria-expanded', 'false');
-			}
-		}
-	});
+        // 點擊選單外部時關閉選單
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('nav')) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    }
 });

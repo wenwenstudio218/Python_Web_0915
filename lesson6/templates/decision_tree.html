@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}決策樹分類{% endblock %}
+{% block style %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/decision_tree.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1>決策樹分類</h1>
+    <p>
+        決策樹（Decision
+        Tree）是一種監督式學習演算法，常用於分類和回歸任務。它通過將數據集分割成更小的子集，並在每個節點上做出決策來建立一棵樹狀結構。每個內部節點表示一個特徵測試，每個分支代表測試結果，而每個葉節點則對應一個類別標籤或回歸值。決策樹的優點包括易於理解和解釋、能夠處理非線性關係以及不需要大量的數據預處理。然而，決策樹也容易過擬合，特別是在樹過深的情況下，因此通常需要進行剪枝或使用集成方法（如隨機森林）來提高模型的泛化能力。
+    </p>
+</main>
+
+<h1>{{ tree_info.algorithm }}</h1>
+<main>
+    <h2>應用領域</h2>
+    <ul>
+        {% for app in tree_info.applications %}
+        <li>{{ app }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>主要優點</h2>
+    <ul>
+        {% for pro in tree_info.pros %}
+        <li>{{ pro }}</li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}

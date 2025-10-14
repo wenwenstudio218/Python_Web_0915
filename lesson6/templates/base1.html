@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
+    {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {# 這裏放的是註解 #}
-    <title>{% block title%}{% endblock%}</title>
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/lesson6_1.css') }}"/>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lesson6_1.css') }}">
+    {% endblock %}
 </head>
+
 <body>
 
-    <header>
-        {% block header %}
-        xxxxxxxx
-        {% endblock %}
-    </header>
+    <div class="container">
+        <h1>
+            {% block header %}
+            歡迎來到 Lesson 6-1
+            {% endblock %}
+        </h1>
+        <p>
+            {% block content %}
+            這是一個使用內嵌 CSS 樣式設計的 HTML 頁面範例。
+            {% endblock %}
+        </p>
+        <p>所有的樣式都寫在 <code>&lt;head&gt;</code> 標籤內的 <code>&lt;style&gt;</code> 區塊中。這種方式適合單一頁面的簡單樣式設計。</p>
 
-    <div class="content">
-        {% block content%}
-        
-        {% endblock %}
+        <ul>
+            {% for user in user_list %}
+            <li>{{ user["name"] }}</li>
+            {% endfor %}
+        </ul>
+
     </div>
 
-    <footer>
-        <p>&copy; 2025 我的程式課程</p>
-    </footer>
     {% block js %}
     {% endblock %}
+
 </body>
+
 </html>
