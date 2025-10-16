@@ -14,6 +14,10 @@ def regression():
 def knn():
     return render_template("knn.html")
 
+@app.route("/test")
+def test():
+    return render_template("test.html")
+
 
 def main():
     app.run(debug=True,port=5001)

@@ -2,7 +2,7 @@
 
 {% block head %}
     {{ super() }}
-    {% block title %}<title>機器學習-首頁</title>{% endblock %}
+    <title>{% block title %}職能發展學院-機器學習{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 {% endblock %}
 
