@@ -1,0 +1,18 @@
+{% extends "base1.html" %}
+
+{% block title %}Welcom to my Web{% endblock %}
+
+{% block header %}Welcom to lesson6_1{% endblock %}
+
+{% block content %}
+This is an example of an HTML page designed with inline CSS styles.
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static',filename = 'js/lesson6_1.js')}}"></script>
+{% endblock %}
+
+{% block head %}
+{{ super() }}  {# 呼叫 base1.html 裡的 head 區塊內容 #}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lesson6_2.css') }}">
+{% endblock %}

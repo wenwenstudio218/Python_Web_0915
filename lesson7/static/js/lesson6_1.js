@@ -1,0 +1,1 @@
+console.log("This is lesson6_1.js,我的名字是Wenwen");
