@@ -5,7 +5,7 @@
 ### 專案結構
 
 ```
-/lesson7
+/lesson7_作業2_蕭怡文
 ├── app.py              # Flask 應用程式主檔案
 ├── static/             # 存放靜態檔案
 │   ├── css/
@@ -19,7 +19,7 @@
 本專案使用 `uv` 進行虛擬環境與套件管理。
 
 1.  **安裝依賴**: `uv add 套件名稱`
-2.  **執行專案**: `uv run python ./lesson7/app.py`
+2.  **執行專案**: `uv run python ./lesson7_作業2_蕭怡文/app.py`
 
 ### 開發規範
 

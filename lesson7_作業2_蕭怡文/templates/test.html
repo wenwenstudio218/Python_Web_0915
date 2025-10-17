@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>範例1</title>
+</head>
+
+<body>
+    <h1 id="title">這是標題</h1>
+    <button id="myButton">點我改變標題</button>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const titleElement = document.querySelector('#title')
+            const buttonElement = document.querySelector('#myButton')
+
+            buttonElement.addEventListener('click', function () {
+                titleElement.textContent = "標題被更改了"
+            })
+        })
+    </script>
+</body>
+
+</html>
