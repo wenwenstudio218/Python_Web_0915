@@ -7,6 +7,10 @@ import numpy as np
 
 app = Flask(__name__)
 
+# 自定義JSON序列化設定
+app.json.ensure_ascii = False
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -22,6 +26,10 @@ def knn():
 @app.route("/test")
 def test():
     return render_template("test.html")
+
+@app.route("/test1")
+def test1():
+    return render_template("test1.html")
 
 @app.route("/api/regression/data")
 def regression_data():
