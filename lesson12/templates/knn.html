@@ -131,5 +131,6 @@
 {% endblock %}
 
 {% block code %}
+<script src="{{ url_for('static', filename='vendor/chart.js/chart.umd.js') }}"></script>
 <script src="{{ url_for('static', filename='js/knn.js')}}"></script>
 {% endblock %}
